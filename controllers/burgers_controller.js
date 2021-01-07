@@ -1,17 +1,16 @@
 const express = require("express");
 const burger = require("../models/burger");
 
-const app = express();
+const router = express.Router();
 
-const PORT = process.env.PORT || 8080;
+// get, post, put routes
 
-// middleware
-app.use(express.static("public"));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+router.get("/", (req, res) => {
+  burger.selectAll((data) => {
+    const allBurgerObject = { burgers: data };
 
-app.listen(PORT, () =>
-  console.log(`Server listening on: http://localhost:${PORT}`)
-);
+    res.render("index", allBurgerObject);
+  });
+});
 
-module.exports = { router };
+module.exports = router;

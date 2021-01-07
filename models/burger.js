@@ -1,7 +1,11 @@
 const orm = require("../config/orm");
 
-selectAll();
-insertOne();
-updateOne();
+const burger = {
+  selectAll(colToSearch, valOfCol) {
+    orm.selectAll("burger");
+  },
+  insertOne() {},
+  updateOne() {},
+};
 
-module.exports = { burgerChanges };
+module.exports = { burger };
